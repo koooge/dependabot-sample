@@ -1,27 +1,16 @@
-name: CI sub-a
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/sub-a"
+    schedule:
+      interval: "daily"
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
-    paths:
-      - "sub-a/**"
+  - package-ecosystem: "npm"
+    directory: "/sub-b"
+    schedule:
+      interval: "daily"
 
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x]
-
-    steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - run: |
-        cd ./sub-a
-        npm ci
-        node index.js
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "daily"
