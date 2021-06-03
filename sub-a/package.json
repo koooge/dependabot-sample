@@ -21,6 +21,6 @@
     "axios": "^0.20.0"
   },
   "devDependencies": {
-    "github-api": "^2.3.0"
+    "github-api": "^3.4.0"
   }
 }
